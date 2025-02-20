@@ -1,3 +1,116 @@
-body  {
-    background-color: red;
+body {
+    margin: 0;
+    min-height: 100vh; /* Минимальная высота, чтобы контент мог растягиваться */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #111;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+    overflow-y: auto; /* Разрешаем вертикальный скролл */
+}
+
+/* Контейнер с псевдоэлементами для рамки */
+.border-animation::before {
+    content: "";
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    padding: 5px; /* Толщина рамки */
+    background: linear-gradient(90deg, #ff0000, #ff7300);
+    background-size: 300% 300%;
+    animation: borderAnimation 5s linear infinite;
+    z-index: -1;
+}
+
+/* Анимация градиента */
+@keyframes borderAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Внутренний фон, чтобы рамка не перекрывала содержимое */
+.border-animation::after {
+    content: "";
+    position: fixed;
+    top: 5px; left: 5px; right: 5px; bottom: 5px;
+    background: #111; /* Цвет фона внутри */
+    z-index: -1;
+}
+
+.container {
+    width: 90%;
+    max-width: 1400px;
+    padding: 20px;
+    box-sizing: border-box;
+    margin-top: 60px; /* Отступ сверху для заголовков */
+    margin-bottom: 60px; /* Отступ снизу для красоты */
+}
+
+/* Неоновый эффект для текста */
+h1, h2 {
+    margin: 10px 0;
+    color: #fff;
+    text-shadow: 
+        0 0 5px #ff0000, 
+        0 0 10px #ff0000, 
+        0 0 20px #ff0000, 
+        0 0 40px #ff0000, 
+        0 0 80px #ff0000;
+    animation: neonGlow 1.5s ease-in-out infinite alternate;
+}
+
+h2 {
+    text-shadow: 
+        0 0 5px #00ff00, 
+        0 0 10px #00ff00, 
+        0 0 20px #00ff00, 
+        0 0 40px #00ff00, 
+        0 0 80px #00ff00;
+}
+
+/* Анимация мерцания неона */
+@keyframes neonGlow {
+    0% {
+        text-shadow: 
+            0 0 5px #d1f72a, 
+            0 0 10px #8ded08, 
+            0 0 20px #0007d9, 
+            0 0 40px #1196f6, 
+            0 0 80px #ff0000;
+    }
+    100% {
+        text-shadow: 
+            0 0 10px #ff0000, 
+            0 0 20px #ff0000, 
+            0 0 40px #ff0000, 
+            0 0 80px #ff0000, 
+            0 0 120px #ff0000;
+    }
+}
+
+/* Контейнер для видео */
+.videos {
+    display: flex;
+    flex-wrap: wrap; /* Позволяет элементам переноситься на новую строку */
+    gap: 20px; /* Отступы между видео */
+    margin-top: 40px;
+    width: 100%;
+}
+
+/* Каждый видео-элемент */
+.video {
+    flex: 1 1 calc(50% - 20px); /* Два видео в ряд с учетом отступов */
+    background-color: #000;
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 16 / 9; /* Соотношение сторон видео */
+}
+
+/* Обрезка видео, чтобы они выглядели одинаково */
+.video iframe {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Заполняет контейнер без искажений */
 }
