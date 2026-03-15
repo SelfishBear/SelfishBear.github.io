@@ -413,25 +413,30 @@ body {
     opacity: 0.5;
 }
 
-.tech-svg {
+.tech-svg,
+.tech-img {
     width: 48px;
     height: 48px;
-    color: var(--text-secondary);
+    object-fit: contain;
     transition: all 0.4s ease;
     position: relative;
     z-index: 1;
-    filter: drop-shadow(0 0 0px transparent);
+    filter: drop-shadow(0 0 0px transparent) grayscale(60%) brightness(0.8);
 }
 
-.tech-icon-card:hover .tech-svg {
-    color: var(--text-primary);
-    filter: drop-shadow(0 0 12px var(--accent-glow));
+.tech-icon-card:hover .tech-svg,
+.tech-icon-card:hover .tech-img {
+    filter: drop-shadow(0 0 12px var(--accent-glow)) grayscale(0%) brightness(1);
 }
 
-.tech-icon-card:nth-child(1):hover .tech-svg { color: #fff; filter: drop-shadow(0 0 14px rgba(255, 255, 255, 0.4)); }
-.tech-icon-card:nth-child(2):hover .tech-svg { color: #68217a; filter: drop-shadow(0 0 14px rgba(104, 33, 122, 0.5)); }
-.tech-icon-card:nth-child(3):hover .tech-svg { color: #2196f3; filter: drop-shadow(0 0 14px rgba(33, 150, 243, 0.5)); }
-.tech-icon-card:nth-child(4):hover .tech-svg { color: #00599c; filter: drop-shadow(0 0 14px rgba(0, 89, 156, 0.5)); }
+.tech-icon-card:nth-child(1):hover .tech-svg,
+.tech-icon-card:nth-child(1):hover .tech-img { filter: drop-shadow(0 0 14px rgba(255, 255, 255, 0.4)) grayscale(0%) brightness(1); }
+.tech-icon-card:nth-child(2):hover .tech-svg,
+.tech-icon-card:nth-child(2):hover .tech-img { filter: drop-shadow(0 0 14px rgba(104, 33, 122, 0.5)) grayscale(0%) brightness(1); }
+.tech-icon-card:nth-child(3):hover .tech-svg,
+.tech-icon-card:nth-child(3):hover .tech-img { filter: drop-shadow(0 0 14px rgba(33, 150, 243, 0.5)) grayscale(0%) brightness(1); }
+.tech-icon-card:nth-child(4):hover .tech-svg,
+.tech-icon-card:nth-child(4):hover .tech-img { filter: drop-shadow(0 0 14px rgba(0, 89, 156, 0.5)) grayscale(0%) brightness(1); }
 
 .tech-icon-card span {
     font-size: 0.85rem;
@@ -775,7 +780,8 @@ body {
         padding: 20px 16px;
     }
 
-    .tech-svg {
+    .tech-svg,
+    .tech-img {
         width: 36px;
         height: 36px;
     }
