@@ -661,6 +661,17 @@ body {
     gap: 28px;
 }
 
+.mechanics-placeholder {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 60px 20px;
+    background: var(--bg-card);
+    border: 1px dashed var(--border);
+    border-radius: var(--radius);
+    color: var(--text-muted);
+    font-size: 1.1rem;
+}
+
 .project-card {
     background: var(--bg-card);
     border: 1px solid var(--border);
@@ -878,6 +889,10 @@ body {
     max-height: 85vh;
     display: block;
     background: #000;
+    border-radius: var(--radius) var(--radius) 0 0;
+}
+
+.video-modal-content:not(:has(.video-modal-bar.visible)) video {
     border-radius: var(--radius);
 }
 
@@ -905,6 +920,49 @@ body {
 .video-modal-close:hover {
     background: rgba(255, 255, 255, 0.15);
     transform: scale(1.1);
+}
+
+/* Video Modal GitHub Bar */
+.video-modal-bar {
+    display: none;
+    padding: 14px 20px;
+    background: var(--bg-card);
+    border-top: 1px solid var(--border);
+    border-radius: 0 0 var(--radius) var(--radius);
+}
+
+.video-modal-bar.visible {
+    display: flex;
+    align-items: center;
+}
+
+.video-modal-github {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+    padding: 8px 20px;
+    border-radius: 100px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid var(--border);
+    transition: all 0.3s ease;
+}
+
+.video-modal-github:hover {
+    color: var(--text-primary);
+    background: rgba(255, 255, 255, 0.1);
+    border-color: var(--accent);
+    box-shadow: 0 0 16px var(--accent-glow);
+}
+
+.video-modal-github-icon {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+    filter: brightness(0) invert(1);
 }
 
 /* ===== SCROLL REVEAL ===== */

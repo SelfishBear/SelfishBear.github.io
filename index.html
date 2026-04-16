@@ -329,6 +329,23 @@
 
                     <div class="project-card">
                         <div class="project-video">
+                            <video src="Overmind.mp4" muted loop playsinline></video>
+                            <div class="project-overlay">
+                                <span class="play-icon">▶</span>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <h3>Overmind</h3>
+                            <p>A strategic experience powered by Unreal Engine.</p>
+                            <div class="project-tags">
+                                <span class="tag tag-ue">Unreal Engine</span>
+                                <span class="tag tag-ue">C++</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-video">
                             <video src="P2.mp4" muted loop playsinline></video>
                             <div class="project-overlay">
                                 <span class="play-icon">▶</span>
@@ -410,7 +427,7 @@
                         </div>
                     </div>
                     
-                    <div class="project-card">
+                    <div class="project-card" data-github="https://github.com/SelfishBear/LastversPipsik">
                         <div class="project-video">
                             <video src="flappy.mp4" muted loop playsinline></video>
                             <div class="project-overlay">
@@ -464,6 +481,21 @@
                     
                 </div>
             </div>
+
+            <!-- Game Mechanics & Systems -->
+            <div class="projects-category">
+                <div class="category-header">
+                    <img src="icons/ue-removebg-preview.png" alt="Unreal Engine" class="category-icon">
+                    <h3 class="category-title">Game Mechanics & Systems</h3>
+                    <div class="category-line"></div>
+                </div>
+                <div class="projects-grid">
+                    <!-- Здесь будут видео с игровыми механиками -->
+                    <div class="mechanics-placeholder">
+                        <p>🎮 Coming soon — gameplay mechanics showcases</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -486,6 +518,12 @@
         <div class="video-modal-content">
             <button class="video-modal-close" id="videoModalClose">&times;</button>
             <video id="modalVideo" controls playsinline></video>
+            <div class="video-modal-bar" id="videoModalBar">
+                <a href="#" target="_blank" class="video-modal-github" id="videoModalGithub">
+                    <img src="icons/github.png" alt="GitHub" class="video-modal-github-icon">
+                    <span>View on GitHub</span>
+                </a>
+            </div>
         </div>
     </div>
 
@@ -520,6 +558,8 @@
         const videoModal = document.getElementById('videoModal');
         const modalVideo = document.getElementById('modalVideo');
         const videoModalClose = document.getElementById('videoModalClose');
+        const videoModalBar = document.getElementById('videoModalBar');
+        const videoModalGithub = document.getElementById('videoModalGithub');
 
         document.querySelectorAll('.project-card').forEach(card => {
             const video = card.querySelector('video');
@@ -528,10 +568,18 @@
                 card.addEventListener('mouseleave', () => { video.pause(); video.currentTime = 0; });
 
                 card.querySelector('.project-video').addEventListener('click', () => {
+                    const githubUrl = card.getAttribute('data-github');
                     modalVideo.src = video.src;
                     videoModal.classList.add('active');
                     modalVideo.play();
                     document.body.style.overflow = 'hidden';
+
+                    if (githubUrl) {
+                        videoModalGithub.href = githubUrl;
+                        videoModalBar.classList.add('visible');
+                    } else {
+                        videoModalBar.classList.remove('visible');
+                    }
                 });
             }
         });
